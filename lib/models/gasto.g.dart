@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'expense.dart';
+part of 'gasto.dart';
 
 // **************************************************************************
 // IsarCollectionGenerator
@@ -9,81 +9,81 @@ part of 'expense.dart';
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters, always_specify_types
 
-extension GetExpenseCollection on Isar {
-  IsarCollection<Expense> get expenses => this.collection();
+extension GetGastoCollection on Isar {
+  IsarCollection<Gasto> get gastos => this.collection();
 }
 
-const ExpenseSchema = CollectionSchema(
-  name: r'Expense',
-  id: -4604318666888508206,
+const GastoSchema = CollectionSchema(
+  name: r'Gasto',
+  id: 4941028211822366755,
   properties: {
-    r'amount': PropertySchema(
+    r'fecha': PropertySchema(
       id: 0,
-      name: r'amount',
-      type: IsarType.double,
-    ),
-    r'date': PropertySchema(
-      id: 1,
-      name: r'date',
+      name: r'fecha',
       type: IsarType.dateTime,
     ),
-    r'name': PropertySchema(
+    r'monto': PropertySchema(
+      id: 1,
+      name: r'monto',
+      type: IsarType.double,
+    ),
+    r'nombre': PropertySchema(
       id: 2,
-      name: r'name',
+      name: r'nombre',
       type: IsarType.string,
     )
   },
-  estimateSize: _expenseEstimateSize,
-  serialize: _expenseSerialize,
-  deserialize: _expenseDeserialize,
-  deserializeProp: _expenseDeserializeProp,
+  estimateSize: _gastoEstimateSize,
+  serialize: _gastoSerialize,
+  deserialize: _gastoDeserialize,
+  deserializeProp: _gastoDeserializeProp,
   idName: r'id',
   indexes: {},
   links: {},
   embeddedSchemas: {},
-  getId: _expenseGetId,
-  getLinks: _expenseGetLinks,
-  attach: _expenseAttach,
+  getId: _gastoGetId,
+  getLinks: _gastoGetLinks,
+  attach: _gastoAttach,
   version: '3.1.0+1',
 );
 
-int _expenseEstimateSize(
-  Expense object,
+int _gastoEstimateSize(
+  Gasto object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
-  bytesCount += 3 + object.name.length * 3;
+  bytesCount += 3 + object.nombre.length * 3;
   return bytesCount;
 }
 
-void _expenseSerialize(
-  Expense object,
+void _gastoSerialize(
+  Gasto object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeDouble(offsets[0], object.amount);
-  writer.writeDateTime(offsets[1], object.date);
-  writer.writeString(offsets[2], object.name);
+  writer.writeDateTime(offsets[0], object.fecha);
+  writer.writeDouble(offsets[1], object.monto);
+  writer.writeString(offsets[2], object.nombre);
 }
 
-Expense _expenseDeserialize(
+Gasto _gastoDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Expense(
-    amount: reader.readDouble(offsets[0]),
-    date: reader.readDateTime(offsets[1]),
-    name: reader.readString(offsets[2]),
+  final object = Gasto(
+    fecha: reader.readDateTime(offsets[0]),
+    monto: reader.readDouble(offsets[1]),
+    nombre: reader.readString(offsets[2]),
   );
   object.id = id;
   return object;
 }
 
-P _expenseDeserializeProp<P>(
+P _gastoDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -91,9 +91,9 @@ P _expenseDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readDouble(offset)) as P;
-    case 1:
       return (reader.readDateTime(offset)) as P;
+    case 1:
+      return (reader.readDouble(offset)) as P;
     case 2:
       return (reader.readString(offset)) as P;
     default:
@@ -101,28 +101,28 @@ P _expenseDeserializeProp<P>(
   }
 }
 
-Id _expenseGetId(Expense object) {
+Id _gastoGetId(Gasto object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _expenseGetLinks(Expense object) {
+List<IsarLinkBase<dynamic>> _gastoGetLinks(Gasto object) {
   return [];
 }
 
-void _expenseAttach(IsarCollection<dynamic> col, Id id, Expense object) {
+void _gastoAttach(IsarCollection<dynamic> col, Id id, Gasto object) {
   object.id = id;
 }
 
-extension ExpenseQueryWhereSort on QueryBuilder<Expense, Expense, QWhere> {
-  QueryBuilder<Expense, Expense, QAfterWhere> anyId() {
+extension GastoQueryWhereSort on QueryBuilder<Gasto, Gasto, QWhere> {
+  QueryBuilder<Gasto, Gasto, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 }
 
-extension ExpenseQueryWhere on QueryBuilder<Expense, Expense, QWhereClause> {
-  QueryBuilder<Expense, Expense, QAfterWhereClause> idEqualTo(Id id) {
+extension GastoQueryWhere on QueryBuilder<Gasto, Gasto, QWhereClause> {
+  QueryBuilder<Gasto, Gasto, QAfterWhereClause> idEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -131,7 +131,7 @@ extension ExpenseQueryWhere on QueryBuilder<Expense, Expense, QWhereClause> {
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<Gasto, Gasto, QAfterWhereClause> idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -153,7 +153,7 @@ extension ExpenseQueryWhere on QueryBuilder<Expense, Expense, QWhereClause> {
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterWhereClause> idGreaterThan(Id id,
+  QueryBuilder<Gasto, Gasto, QAfterWhereClause> idGreaterThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -162,7 +162,7 @@ extension ExpenseQueryWhere on QueryBuilder<Expense, Expense, QWhereClause> {
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<Gasto, Gasto, QAfterWhereClause> idLessThan(Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -171,7 +171,7 @@ extension ExpenseQueryWhere on QueryBuilder<Expense, Expense, QWhereClause> {
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterWhereClause> idBetween(
+  QueryBuilder<Gasto, Gasto, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -188,107 +188,44 @@ extension ExpenseQueryWhere on QueryBuilder<Expense, Expense, QWhereClause> {
   }
 }
 
-extension ExpenseQueryFilter
-    on QueryBuilder<Expense, Expense, QFilterCondition> {
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> amountEqualTo(
-    double value, {
-    double epsilon = Query.epsilon,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'amount',
-        value: value,
-        epsilon: epsilon,
-      ));
-    });
-  }
-
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> amountGreaterThan(
-    double value, {
-    bool include = false,
-    double epsilon = Query.epsilon,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'amount',
-        value: value,
-        epsilon: epsilon,
-      ));
-    });
-  }
-
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> amountLessThan(
-    double value, {
-    bool include = false,
-    double epsilon = Query.epsilon,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'amount',
-        value: value,
-        epsilon: epsilon,
-      ));
-    });
-  }
-
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> amountBetween(
-    double lower,
-    double upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-    double epsilon = Query.epsilon,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'amount',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-        epsilon: epsilon,
-      ));
-    });
-  }
-
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> dateEqualTo(
+extension GastoQueryFilter on QueryBuilder<Gasto, Gasto, QFilterCondition> {
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> fechaEqualTo(
       DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'date',
+        property: r'fecha',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> dateGreaterThan(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> fechaGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'date',
+        property: r'fecha',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> dateLessThan(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> fechaLessThan(
     DateTime value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'date',
+        property: r'fecha',
         value: value,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> dateBetween(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> fechaBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -296,7 +233,7 @@ extension ExpenseQueryFilter
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'date',
+        property: r'fecha',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -305,7 +242,7 @@ extension ExpenseQueryFilter
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> idEqualTo(Id value) {
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -314,7 +251,7 @@ extension ExpenseQueryFilter
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -327,7 +264,7 @@ extension ExpenseQueryFilter
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> idLessThan(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -340,7 +277,7 @@ extension ExpenseQueryFilter
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> idBetween(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -357,20 +294,82 @@ extension ExpenseQueryFilter
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameEqualTo(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> montoEqualTo(
+    double value, {
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'monto',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> montoGreaterThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'monto',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> montoLessThan(
+    double value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'monto',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> montoBetween(
+    double lower,
+    double upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'monto',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreEqualTo(
     String value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'name',
+        property: r'nombre',
         value: value,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameGreaterThan(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreGreaterThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -378,14 +377,14 @@ extension ExpenseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'name',
+        property: r'nombre',
         value: value,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameLessThan(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreLessThan(
     String value, {
     bool include = false,
     bool caseSensitive = true,
@@ -393,14 +392,14 @@ extension ExpenseQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'name',
+        property: r'nombre',
         value: value,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameBetween(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreBetween(
     String lower,
     String upper, {
     bool includeLower = true,
@@ -409,7 +408,7 @@ extension ExpenseQueryFilter
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'name',
+        property: r'nombre',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -419,215 +418,209 @@ extension ExpenseQueryFilter
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameStartsWith(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreStartsWith(
     String value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'name',
+        property: r'nombre',
         value: value,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameEndsWith(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreEndsWith(
     String value, {
     bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'name',
+        property: r'nombre',
         value: value,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameContains(
-      String value,
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreContains(String value,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.contains(
-        property: r'name',
+        property: r'nombre',
         value: value,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameMatches(
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreMatches(
       String pattern,
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.matches(
-        property: r'name',
+        property: r'nombre',
         wildcard: pattern,
         caseSensitive: caseSensitive,
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameIsEmpty() {
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'name',
+        property: r'nombre',
         value: '',
       ));
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterFilterCondition> nameIsNotEmpty() {
+  QueryBuilder<Gasto, Gasto, QAfterFilterCondition> nombreIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'name',
+        property: r'nombre',
         value: '',
       ));
     });
   }
 }
 
-extension ExpenseQueryObject
-    on QueryBuilder<Expense, Expense, QFilterCondition> {}
+extension GastoQueryObject on QueryBuilder<Gasto, Gasto, QFilterCondition> {}
 
-extension ExpenseQueryLinks
-    on QueryBuilder<Expense, Expense, QFilterCondition> {}
+extension GastoQueryLinks on QueryBuilder<Gasto, Gasto, QFilterCondition> {}
 
-extension ExpenseQuerySortBy on QueryBuilder<Expense, Expense, QSortBy> {
-  QueryBuilder<Expense, Expense, QAfterSortBy> sortByAmount() {
+extension GastoQuerySortBy on QueryBuilder<Gasto, Gasto, QSortBy> {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> sortByFecha() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'amount', Sort.asc);
+      return query.addSortBy(r'fecha', Sort.asc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> sortByAmountDesc() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> sortByFechaDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'amount', Sort.desc);
+      return query.addSortBy(r'fecha', Sort.desc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> sortByDate() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> sortByMonto() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'date', Sort.asc);
+      return query.addSortBy(r'monto', Sort.asc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> sortByDateDesc() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> sortByMontoDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'date', Sort.desc);
+      return query.addSortBy(r'monto', Sort.desc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> sortByName() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> sortByNombre() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'name', Sort.asc);
+      return query.addSortBy(r'nombre', Sort.asc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> sortByNameDesc() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> sortByNombreDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'name', Sort.desc);
+      return query.addSortBy(r'nombre', Sort.desc);
     });
   }
 }
 
-extension ExpenseQuerySortThenBy
-    on QueryBuilder<Expense, Expense, QSortThenBy> {
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenByAmount() {
+extension GastoQuerySortThenBy on QueryBuilder<Gasto, Gasto, QSortThenBy> {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenByFecha() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'amount', Sort.asc);
+      return query.addSortBy(r'fecha', Sort.asc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenByAmountDesc() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenByFechaDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'amount', Sort.desc);
+      return query.addSortBy(r'fecha', Sort.desc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenByDate() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'date', Sort.asc);
-    });
-  }
-
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenByDateDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'date', Sort.desc);
-    });
-  }
-
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenById() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenByName() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenByMonto() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'name', Sort.asc);
+      return query.addSortBy(r'monto', Sort.asc);
     });
   }
 
-  QueryBuilder<Expense, Expense, QAfterSortBy> thenByNameDesc() {
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenByMontoDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'name', Sort.desc);
+      return query.addSortBy(r'monto', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenByNombre() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'nombre', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Gasto, Gasto, QAfterSortBy> thenByNombreDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'nombre', Sort.desc);
     });
   }
 }
 
-extension ExpenseQueryWhereDistinct
-    on QueryBuilder<Expense, Expense, QDistinct> {
-  QueryBuilder<Expense, Expense, QDistinct> distinctByAmount() {
+extension GastoQueryWhereDistinct on QueryBuilder<Gasto, Gasto, QDistinct> {
+  QueryBuilder<Gasto, Gasto, QDistinct> distinctByFecha() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'amount');
+      return query.addDistinctBy(r'fecha');
     });
   }
 
-  QueryBuilder<Expense, Expense, QDistinct> distinctByDate() {
+  QueryBuilder<Gasto, Gasto, QDistinct> distinctByMonto() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'date');
+      return query.addDistinctBy(r'monto');
     });
   }
 
-  QueryBuilder<Expense, Expense, QDistinct> distinctByName(
+  QueryBuilder<Gasto, Gasto, QDistinct> distinctByNombre(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'name', caseSensitive: caseSensitive);
+      return query.addDistinctBy(r'nombre', caseSensitive: caseSensitive);
     });
   }
 }
 
-extension ExpenseQueryProperty
-    on QueryBuilder<Expense, Expense, QQueryProperty> {
-  QueryBuilder<Expense, int, QQueryOperations> idProperty() {
+extension GastoQueryProperty on QueryBuilder<Gasto, Gasto, QQueryProperty> {
+  QueryBuilder<Gasto, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Expense, double, QQueryOperations> amountProperty() {
+  QueryBuilder<Gasto, DateTime, QQueryOperations> fechaProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'amount');
+      return query.addPropertyName(r'fecha');
     });
   }
 
-  QueryBuilder<Expense, DateTime, QQueryOperations> dateProperty() {
+  QueryBuilder<Gasto, double, QQueryOperations> montoProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'date');
+      return query.addPropertyName(r'monto');
     });
   }
 
-  QueryBuilder<Expense, String, QQueryOperations> nameProperty() {
+  QueryBuilder<Gasto, String, QQueryOperations> nombreProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'name');
+      return query.addPropertyName(r'nombre');
     });
   }
 }

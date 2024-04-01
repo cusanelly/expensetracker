@@ -1,7 +1,17 @@
+import 'package:expense_tracker_app/database/gastos_database.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Inicializamos la db
+  await GastosDatabase.initialize();
+
+  runApp(ChangeNotifierProvider(
+    create: (context) => GastosDatabase(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +21,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Expenses app.',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -31,7 +42,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Expnses app Home Page'),
     );
   }
 }

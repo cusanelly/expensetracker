@@ -2,14 +2,14 @@ import 'package:isar/isar.dart';
 
 // Esta linea permite crear el archivo isar
 // Correr el siguiente comando: dart run build_runner build
-part 'expense.g.dart';
+part 'gasto.g.dart';
 
 @Collection()
-class Expense {
+class Gasto {
   Id id = Isar.autoIncrement; // you can also use id = null to auto increment
-  final String name;
-  final double amount;
-  final DateTime date;
+  final String nombre;
+  final double monto;
+  final DateTime fecha;
 
-  Expense({required this.name, required this.amount, required this.date});
+  Gasto({required this.nombre, required this.monto, required this.fecha});
 }
