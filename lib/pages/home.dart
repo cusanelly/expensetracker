@@ -15,6 +15,12 @@ class _HomeState extends State<Home> {
   TextEditingController nombreController = TextEditingController();
   TextEditingController montoController = TextEditingController();
 
+  @override
+  void initState() {
+    Provider.of<GastosDatabase>(context, listen: false).leerGasto();
+    super.initState();
+  }
+
   void abrirDialogNuevoGasto() {
     showDialog(
         context: context,
@@ -43,10 +49,26 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: abrirDialogNuevoGasto,
-        child: const Icon(Icons.add),
+    // Widget que permite adherir una fuente a los widgets para su consumo.
+    return Consumer<GastosDatabase>(
+      builder: (context, value, child) => Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: abrirDialogNuevoGasto,
+          child: const Icon(Icons.add),
+        ),
+        // Widget de vista de listado.
+        body: ListView.builder(
+            itemCount: value.allGastos.length,
+            itemBuilder: (context, index) {
+              // Obtenemos los gastos de forma individual.
+              Gasto gastoItem = value.allGastos[index];
+
+              // retornamos item a la pantalla.
+              return ListTile(
+                title: Text(gastoItem.nombre),
+                trailing: Text(formatMonto(gastoItem.monto)),
+              );
+            }),
       ),
     );
   }
