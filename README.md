@@ -1,6 +1,7 @@
 # expense_tracker_app
 
-A new Flutter project.
+Flutter Expense project taken from the following tutorial:
+[Mitch Koto - Minimal expense tracker app](https://www.youtube.com/watch?v=ULupDyOgcJg&t=256s)
 
 ## Getting Started
 

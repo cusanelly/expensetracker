@@ -1,4 +1,5 @@
 import 'package:expense_tracker_app/database/gastos_database.dart';
+import 'package:expense_tracker_app/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Expnses app Home Page'),
+      home: const Home(),
     );
   }
 }
