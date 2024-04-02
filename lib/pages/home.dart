@@ -1,3 +1,4 @@
+import 'package:expense_tracker_app/components/my_list_tile.dart';
 import 'package:expense_tracker_app/database/gastos_database.dart';
 import 'package:expense_tracker_app/hekper/helper_functions.dart';
 import 'package:expense_tracker_app/models/gasto.dart';
@@ -64,10 +65,11 @@ class _HomeState extends State<Home> {
               Gasto gastoItem = value.allGastos[index];
 
               // retornamos item a la pantalla.
-              return ListTile(
-                title: Text(gastoItem.nombre),
-                trailing: Text(formatMonto(gastoItem.monto)),
-              );
+              // Usamos Widget personalizado para mostrar los gastos.
+              // Widget se encuentra en la carpeta components.
+              return MyListTile(
+                  title: gastoItem.nombre,
+                  trailing: formatMonto(gastoItem.monto));
             }),
       ),
     );
