@@ -22,6 +22,7 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
+// Dialogo para crear nuevo gasto.
   void abrirDialogNuevoGasto() {
     showDialog(
         context: context,
@@ -48,6 +49,47 @@ class _HomeState extends State<Home> {
             ));
   }
 
+// Dialogo para editar nuevo gasto.
+  void abrirDialogEditarGasto(Gasto item) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: const Text("Editar Gasto."),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // Nombre input
+                  TextField(
+                    controller: nombreController,
+                    decoration: InputDecoration(hintText: item.nombre),
+                  ),
+                  // monto input
+                  TextField(
+                    controller: montoController,
+                    decoration:
+                        InputDecoration(hintText: item.monto.toString()),
+                  ),
+                ],
+              ),
+
+              // Administra los botones de acciones del formulario.
+              actions: [_cancelButton(), _editButton(item)],
+            ));
+  }
+
+// Dialogo para borrar gasto.
+
+  void abrirDialogBorrarGasto(Gasto item) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text("Borrar gasto ${item.nombre}?"),
+
+              // Administra los botones de acciones del formulario.
+              actions: [_cancelButton(), _deleteButton(item.id)],
+            ));
+  }
+
   @override
   Widget build(BuildContext context) {
     // Widget que permite adherir una fuente a los widgets para su consumo.
@@ -68,8 +110,11 @@ class _HomeState extends State<Home> {
               // Usamos Widget personalizado para mostrar los gastos.
               // Widget se encuentra en la carpeta components.
               return MyListTile(
-                  title: gastoItem.nombre,
-                  trailing: formatMonto(gastoItem.monto));
+                title: gastoItem.nombre,
+                trailing: formatMonto(gastoItem.monto),
+                onEditPressed: (context) => abrirDialogEditarGasto(gastoItem),
+                onDeletePressed: (context) => abrirDialogBorrarGasto(gastoItem),
+              );
             }),
       ),
     );
@@ -108,5 +153,49 @@ class _HomeState extends State<Home> {
           }
         },
         child: const Text("Save"));
+  }
+
+// Boton para editar valor.
+  Widget _editButton(Gasto item) {
+    return MaterialButton(
+        onPressed: () async {
+          if (nombreController.text.isNotEmpty ||
+              montoController.text.isNotEmpty) {
+            Navigator.pop(context);
+
+            // editamos el objeto con los valores ingresados por el usuario.
+            Gasto actualizacionGasto = Gasto(
+                nombre: nombreController.text.isNotEmpty
+                    ? nombreController.text
+                    : item.nombre,
+                monto: montoController.text.isNotEmpty
+                    ? convertStringToDouble(montoController.text)
+                    : item.monto,
+                fecha: DateTime.now());
+
+            // Salvamos valores editados en la base de datos.
+            await context
+                .read<GastosDatabase>()
+                .updateGasto(item.id, actualizacionGasto);
+
+            // Vaciamos los valores del formulario.
+            nombreController.clear();
+            montoController.clear();
+          }
+        },
+        child: const Text("Save Edit"));
+  }
+
+  // Boton para borrar valor.
+  Widget _deleteButton(int id) {
+    return MaterialButton(
+        onPressed: () async {
+          // Levantamos interfaz
+          Navigator.pop(context);
+
+          // Salvamos valores editados en la base de datos.
+          await context.read<GastosDatabase>().deleteGasto(id);
+        },
+        child: const Text("Borrar"));
   }
 }
